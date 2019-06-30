@@ -116,6 +116,19 @@ class Vector {
     }
     return sum;
   }
+
+  /**
+   * Return the vector in a human readable form
+   */
+  toString() {
+    var output = "(";
+    for (var i = 0; i < this.size; i++) {
+      output += this.get(i);
+      if (i != this.size - 1) output += ", ";
+    }
+    output += ")";
+    return output;
+  }
 }
 
 module.exports = Vector;
