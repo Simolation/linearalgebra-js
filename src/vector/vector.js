@@ -5,15 +5,15 @@ var numbers = Symbol();
 var size = Symbol();
 
 /**
- * Represents a vecotr of numbers
+ * Represents a vecotr of numbers.
  *
  * @author Simon Osterlehner
  */
 class Vector {
   /**
-   * Create a new vector
+   * Create a new {@link Vector}
    *
-   * @param {array|int} content Size of the vector or the array values
+   * @param {array|number} content Size of the vector or the array values
    */
   constructor(content) {
     //Check if content is an array
@@ -22,7 +22,7 @@ class Vector {
       this[size] = content.length;
       this[numbers] = content;
     } else {
-      if (content < 0) throw "Vector size must not be negative.";
+      if (content < 0) throw new Error("Vector size must not be negative.");
 
       //create a new empty vector
       this[size] = content;
@@ -37,9 +37,10 @@ class Vector {
    * @param {Vector} secondVector the vector to add
    */
   add(secondVector) {
-    if (!(secondVector instanceof Vector)) throw "A vector to add is required.";
+    if (!(secondVector instanceof Vector))
+      throw new Error("A vector to add is required.");
     if (secondVector.size != this.size)
-      throw "Vector sizes must be equal when adding them.";
+      throw new Error("Vector sizes must be equal when adding them.");
 
     for (var i = 0; i < this.size; i++) {
       this[numbers][i] += secondVector.get(i);
@@ -53,7 +54,7 @@ class Vector {
    */
   scale(factor) {
     if (typeof factor != "number")
-      throw "A vector can only be scaled with a number.";
+      throw new Error("A vector can only be scaled with a number.");
 
     for (var i = 0; i < this.size; i++) {
       this[numbers][i] *= factor;
@@ -64,13 +65,17 @@ class Vector {
    * Sums up the scalar product with a second vector of the same dimension.
    *
    * @param {Vector} secondVector
-   * @return the calculated scalar product value
+   * @returns the calculated scalar product value
    */
   scalarProduct(secondVector) {
     if (!(secondVector instanceof Vector))
-      throw "A vector is required for calculating the scalar product.";
+      throw new Error(
+        "A vector is required for calculating the scalar product."
+      );
     if (secondVector.size != this.size)
-      throw "Vector sizes must be equal for calculating the scalar product.";
+      throw new Error(
+        "Vector sizes must be equal for calculating the scalar product."
+      );
 
     var sum = 0;
     for (var i = 0; i < this.size; i++) {
@@ -80,7 +85,7 @@ class Vector {
   }
 
   get(position) {
-    if (this.size < position) throw "Vector index out of bounds.";
+    if (this.size < position) throw new Error("Vector index out of bounds.");
     return this[numbers][position];
   }
 
@@ -91,7 +96,7 @@ class Vector {
    * @param {number} value		the new value
    */
   set(position, value) {
-    if (this.size < position) throw "Vector index out of bounds.";
+    if (this.size < position) throw new Error("Vector index out of bounds.");
     this[numbers][position] = value;
   }
 
@@ -106,7 +111,7 @@ class Vector {
   /**
    * Calculates the sum of all values in this {@link Vector}.
    *
-   * @return the calculated sum
+   * @returns the calculated sum
    */
   get sum() {
     var sum = 0;
