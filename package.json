@@ -1,0 +1,25 @@
+{
+  "name": "linearalgebra",
+  "version": "0.0.1",
+  "description": "Matrix and vector operations, gaussian elimination and other stuff",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Simolation/linearalgebra-js.git"
+  },
+  "keywords": [
+    "linear",
+    "algebra",
+    "matrix",
+    "vector"
+  ],
+  "author": "Simon Osterlehner <simon@osterlehner.de>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Simolation/linearalgebra-js/issues"
+  },
+  "homepage": "https://github.com/Simolation/linearalgebra-js#readme"
+}
